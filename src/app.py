@@ -13,6 +13,8 @@ from dash import Dash, html,dcc, Input, Output
 app = Dash(__name__) #Make an instance of the dashboad application
 # For best practices of already existing css file, include the following in app. external_stylesheets=
 #Specify the layout of the dashboard
+
+server = app.server
 app.layout = html.Div([
     html.H1(children=["Bicycle Traffic Dashboard"]),
     html.H2(children=dcc.Markdown("Location: [Divison St. Ann Arbor, MI](https://maps.app.goo.gl/qCvGoYSX4VJrZCdA9)")),
@@ -65,4 +67,4 @@ def update_figure(start_date,end_date,data_res_value):
     return fig
 
 if __name__ == '__main__':
-    app.run(jupyter_mode='external',debug=True)
+    app.run(jupyter_mode='external',debug=True, port=8051)
